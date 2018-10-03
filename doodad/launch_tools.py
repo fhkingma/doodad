@@ -19,7 +19,7 @@ def launch_shell(
 def launch_python(
         target,
         python_cmd='python',
-	prefix='',
+	    prefix='',
         mode=LOCAL,
         mount_points=None,
         args=None,
@@ -66,14 +66,14 @@ def launch_python(
     mount_points = mount_points + [target_mount]
     target_full_path = os.path.join(target_mount.mount_dir(), os.path.basename(target))
 
+
     # Tensorboard_log_dir must always be in the first mount!
     tensorboard_log_dir = mount_points[0].get_mount_point()
-     
     command = make_python_command(
         target_full_path,
         args=args,
         python_cmd=python_cmd,
-	prefix=prefix,
+	    prefix=prefix,
         fake_display=fake_display,
         use_cloudpickle=use_cloudpickle,
         tensorboard=tensorboard,
@@ -87,7 +87,7 @@ HEADLESS = 'xvfb-run -a -s "-ac -screen 0 1400x900x24 +extension RANDR"'
 def make_python_command(
         target,
         python_cmd='python',
-	prefix='',
+	    prefix='',
         args=None,
         fake_display=False,
         use_cloudpickle=False,
@@ -111,6 +111,5 @@ def make_python_command(
             # to get the first process running in the background we use &
             # it's called multi-threading
             cmd = 'tensorboard --logdir %s & %s' % (tensorboard_log_dir, cmd)
-
     return cmd
 

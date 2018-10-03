@@ -83,7 +83,7 @@ class DockerMode(LaunchMode):
         if pre_cmd:
             cmd_list.extend(pre_cmd)
 
-        if verbose: 
+        if verbose:
             if self.gpu:
                 cmd_list.append('echo \"Running in docker (gpu)\"')
             else:
@@ -113,6 +113,7 @@ class DockerMode(LaunchMode):
         if tensorboard:
             extra_args += ' -p 0.0.0.0:6006:6006'
         
+
         if checkpoint:
             # set up checkpoint stuff
             use_tty = False
@@ -164,6 +165,7 @@ class SSHDocker(DockerMode):
         self.run_id = 'run_%s' % uuid.uuid4()
         self.tmp_dir = os.path.join(SSHDocker.TMP_DIR, self.run_id)
         self.checkpoint = None
+
 
     def launch_command(self, main_cmd, mount_points=None, dry=False, verbose=False, tensorboard=False):
         py_path = []
@@ -220,7 +222,6 @@ class SSHDocker(DockerMode):
             ssh_cmd = self.credentials.get_ssh_script_cmd(ntf.name, tensorboard=tensorboard)
 
             call_and_wait(ssh_cmd, dry=dry, verbose=verbose)
-
 def dedent(s):
     lines = [l.strip() for l in s.split('\n')]
     return '\n'.join(lines)

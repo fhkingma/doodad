@@ -83,7 +83,6 @@ class MountLocal(Mount):
     def get_mount_point(self):
          return self.mount_point
 
-
 class MountGitRepo(Mount):
     def __init__(self, git_url, git_credentials=None, **kwargs):
         super(MountGitRepo, self).__init__(read_only=True, **kwargs)
