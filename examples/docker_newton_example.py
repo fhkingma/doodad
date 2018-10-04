@@ -31,8 +31,9 @@ mounts = [
     mount.MountLocal(local_dir='~/data/%s' % MY_USERNAME, mount_point=OUTPUT_DIR, output=True),
 ]
 
-pd.launch_python(
-    target='path/to/script.py',  # point to a target script (absolute path).
-    mode=mode_ssh,
+dd.launch_python(
+    target='/home/fhkingma/Documents/glow/train.py',  # point to a target script (absolute path).
+    mode=mode_local,
     mount_points=mounts,
+    verbose=True,
 )

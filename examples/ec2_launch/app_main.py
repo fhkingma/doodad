@@ -4,6 +4,8 @@ import doodad as dd
 
 import secretlib
 
+#print(os.getcwd())
+
 print('Launching app_main!')
 
 # These are arguments passed in from launch_python

@@ -6,6 +6,7 @@ import doodad.ssh as ssh
 import doodad.mount as mount
 from doodad.utils import EXAMPLES_DIR, REPO_DIR
 
+print(os.getcwd())
 
 # Local docker
 mode_docker = dd.mode.LocalDocker(
@@ -43,9 +44,8 @@ else:
         mount_point=OUTPUT_DIR, output=True)
 mounts.append(output_mount)
 
-print(mounts)
-
 THIS_FILE_DIR = os.path.realpath(os.path.dirname(__file__))
+print(THIS_FILE_DIR)
 dd.launch_python(
     target=os.path.join(THIS_FILE_DIR, 'app_main.py'),  # point to a target script. If running remotely, this will be copied over
     mode=MY_RUN_MODE,

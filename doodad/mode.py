@@ -82,7 +82,6 @@ class DockerMode(LaunchMode):
         cmd_list= CommandBuilder()
         if pre_cmd:
             cmd_list.extend(pre_cmd)
-
         if verbose:
             if self.gpu:
                 cmd_list.append('echo \"Running in docker (gpu)\"')
@@ -148,7 +147,6 @@ class LocalDocker(DockerMode):
                     py_path.append(mount_pnt)
             else:
                 raise NotImplementedError(type(mount))
-
         full_cmd = self.get_docker_cmd(cmd, extra_args=mnt_args, pythonpath=py_path,
                 checkpoint=self.checkpoints, tensorboard=tensorboard)
         if verbose:
